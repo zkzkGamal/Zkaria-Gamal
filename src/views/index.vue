@@ -92,7 +92,7 @@ export default {
     fetchData (){
       // to gst all posts
       axios
-        .get('http://127.0.0.1:8000/api/posts')
+        .get('https://zkariag.pythonanywhere.com/api/posts')
         .then((response) => {
           this.posts = response.data;
         })
