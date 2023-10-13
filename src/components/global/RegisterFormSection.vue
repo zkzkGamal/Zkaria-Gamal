@@ -60,7 +60,7 @@ import axios from 'axios'
             registerFunction(){
                 if(this.password == this.conf_password){
                     axios
-                        .post('http://127.0.0.1:8000/api/registeration/register' , {
+                        .post('https://zkariag.pythonanywhere.com/api/registeration/register' , {
                             username: this.username ,
                             email:this.email,
                             password:this.password,

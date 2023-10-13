@@ -96,7 +96,7 @@ export default {
     fetchData() {
       // to gst all posts
       axios
-        .get('http://127.0.0.1:8000/api/posts')
+        .get('https://zkariag.pythonanywhere.com/api/posts')
         .then((response) => {
           this.posts = response.data;
         })
@@ -105,7 +105,7 @@ export default {
         });
       // to get all tags
       axios
-        .get('http://127.0.0.1:8000/api/tags')
+        .get('https://zkariag.pythonanywhere.com/api/tags')
         .then((response) => {
           this.tagsDatas = response.data
 
@@ -130,7 +130,7 @@ export default {
       }
 
       // Construct the URL with the query parameters
-      const url = 'http://127.0.0.1:8000/api/posts?' + queryParams.join('&');
+      const url = 'https://zkariag.pythonanywhere.com/api/posts?' + queryParams.join('&');
 
       // Make the GET request with the constructed URL
       axios.get(url)
