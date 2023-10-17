@@ -2,7 +2,9 @@
   <section class="s1">
     <div class="main-container">
       <div class="greeting-wrapper">
-				<h1 v-once>Hi, I'm {{my_name}} </h1>
+				<h1 v-once>Hi, I'm {{my_name}}  , <br/>
+           I stand with palestine
+        </h1>
 			</div>
       <div class="intro-wrapper">
         <headerCom class="aa"/>

@@ -62,7 +62,6 @@
             token: response.data.token,
             user: response.data.user,
             superuser: response.data.is_superuser,
-            isAuth: true,
           });
   
           this.successMessage = `Logged in as: ${response.data.user.first_name} ${response.data.user.last_name}`;

@@ -68,11 +68,11 @@ import axios from 'axios'
                             last_name:this.l_name,
                         })
                         .then((response)=>{
-                            this.successMessage = `Logged in as: ${this.first_name} ${this.last_name}`;
+                            this.successMessage = `Logged in as: ${this.username}`;
                             console.log(response)
                             setTimeout(() => {
                                 this.$router.push('/login');
-                            }, 2000);
+                            }, 1500);
                         }).catch((error)=>{
                             console.error('register error:', error);
                             this.errorMessage = 'Invalid credentials';
