@@ -70,7 +70,7 @@ export default {
       if (this.user){
           return this.user.is_superuser ? true : false;
         }else{
-          return this.superuser? true : false;
+          return this.superuser? false : false;
         }
     },
   },mounted(){
