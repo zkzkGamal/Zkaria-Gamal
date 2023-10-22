@@ -20,7 +20,6 @@ import updatePost from './views/updatePost.vue'
 // to call app to run serve
 import App from './App.vue'
 import store from './store';
-import VuePdf from 'vue-pdf';
 
 
 // to create routes
@@ -119,6 +118,6 @@ router.beforeEach((to, from, next) => {
 
 // createApp(App).mount('#app')
 // 5. Create and mount the root instance.
-createApp(App).use(store).use(router).use(VuePdf).mount('#app')
+createApp(App).use(store).use(router).mount('#app')
 
 
