@@ -7,7 +7,7 @@
         .</p>
         <hr>
         <h4>TOP EXPERTISE</h4>
-        <p>Fullstack developer with primary focus on Django + Vue.js: <a target="_blank" href="../../static/ZkariaGamalResume">Download Resume</a></p>
+        <p>Fullstack developer with primary focus on Django + Vue.js: <vue-pdf src="../../static/ZkariaGamalResume">Download Resume</vue-pdf></p>
         <skill/>
     </div>
 </template>
