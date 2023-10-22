@@ -67,7 +67,7 @@ export default {
         return '';
     },
     super1() {
-      if (this.user.is_superuser){
+      if (this.user){
           return this.user.is_superuser ? true : false;
         }else{
           return this.superuser? true : false;
