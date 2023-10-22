@@ -67,7 +67,11 @@ export default {
         return '';
     },
     super1() {
-      return this.user.is_superuser ? true : false;
+      if (this.user.is_superuser){
+          return this.user.is_superuser ? true : false;
+        }else{
+          return this.superuser? true : false;
+        }
     },
   },mounted(){
     this.fetchData()
