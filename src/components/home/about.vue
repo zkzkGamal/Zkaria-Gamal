@@ -7,7 +7,7 @@
         .</p>
         <hr>
         <h4>TOP EXPERTISE</h4>
-        <p>Fullstack developer with primary focus on Django + Vue.js: <router-link arget="_blank" to="@/assets/ZkariaGamalResume">Download Resume</router-link></p>
+        <p>Fullstack developer with primary focus on Django + Vue.js: <a arget="_blank" href="@/assets/ZkariaGamalResume">Download Resume</a></p>
         <skill/>
     </div>
 </template>
