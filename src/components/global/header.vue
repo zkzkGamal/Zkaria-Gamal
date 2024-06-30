@@ -18,7 +18,7 @@
                 <li><router-link to="/login">Login</router-link></li>
             </span>
             <span v-else>
-                <li><router-link :to="{ name: 'profile' }"> Account</router-link></li>
+                <li><router-link :to="{ name: 'profile' }"> notifications</router-link></li>
                 <li><a href="/login" @click="logout">Logout</a></li>
             </span>
 

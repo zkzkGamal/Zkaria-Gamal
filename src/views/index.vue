@@ -76,6 +76,18 @@ export default {
     HomeCards,
     contactForm,
   },mounted() {
+
+    const socket = new WebSocket('ws://127.0.0.1:8000/ws/socket-server/');
+    
+    Notification.requestPermission()
+    console.log(Notification.permission)
+
+    socket.onopen = () => {
+      console.log('WebSocket connected');
+    };
+
+
+
     // Move the Google Analytics code to the mounted hook
     window.dataLayer = window.dataLayer || [];
     function gtag() {
@@ -94,7 +106,7 @@ export default {
     fetchData (){
       // to gst all posts
       axios
-        .get('https://zkariag.pythonanywhere.com/api/posts')
+        .get('http://127.0.0.1:8000/api/posts')
         .then((response) => {
           this.posts = response.data;
         })

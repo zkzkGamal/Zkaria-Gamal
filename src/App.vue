@@ -8,7 +8,21 @@ import './assets/default.css'
 export default {
   name: 'App',
   mounted(){
+    const socket = new WebSocket('ws://127.0.0.1:8000/ws/socket-server/');
     
+    Notification.requestPermission()
+    console.log(Notification.permission)
+
+    socket.onopen = () => {
+      console.log('WebSocket connected');
+    };
+
+    socket.onmessage = (event) => {
+      const notification = JSON.parse(event.data);
+      if (Notification.permission == 'granted'){
+        new Notification(notification.message)
+      }
+    };
   },
   data: function (){
     return {

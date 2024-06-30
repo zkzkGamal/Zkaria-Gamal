@@ -58,7 +58,7 @@ import axios from 'axios';
         ,methods:{
             getComments(){
                 axios
-                .get(`https://zkariag.pythonanywhere.com/api/comment/${this.post_id}`)
+                .get(`http://127.0.0.1:8000/api/comment/${this.post_id}`)
                 .then((response)=>{
                     this.comments = response.data
 
@@ -73,7 +73,7 @@ import axios from 'axios';
             },
             getUser(id){
                 axios
-                .get(`https://zkariag.pythonanywhere.com/api/ProfileDetail/${id}`)
+                .get(`http://127.0.0.1:8000/api/ProfileDetail/${id}`)
                 .then((response)=>{
                     this.userProfile.push(response.data)
                 })
@@ -117,7 +117,7 @@ import axios from 'axios';
                     'Content-type': 'application/json',
                     'X-CSRFToken': this.csrfToken,
                 }
-                axios.post(`https://zkariag.pythonanywhere.com/api/comment/${this.post_id}` ,{
+                axios.post(`http://127.0.0.1:8000/api/comment/${this.post_id}` ,{
                     post:this.post_id,
                     user:this.user.id,
                     comment:this.commentbody,

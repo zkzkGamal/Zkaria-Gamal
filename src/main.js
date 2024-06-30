@@ -63,7 +63,7 @@ const routes = [
       component: createpost,
     },
     {
-      path: '/profile',
+      path: '/notify',
       name: 'profile',
       component: profile,
     },

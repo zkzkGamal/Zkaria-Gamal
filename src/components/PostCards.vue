@@ -54,7 +54,7 @@
     methods: {
       fetchData() {
         axios
-          .get('https://zkariag.pythonanywhere.com/api/tags')
+          .get('http://127.0.0.1:8000/api/tags')
           .then((response) => {
             response.data.forEach((element, i) => {
               this.tagsNames.push(element.name);
@@ -74,7 +74,7 @@
             'X-CSRFToken': this.csrfToken,
           };
           axios
-            .delete(`https://zkariag.pythonanywhere.com/api/posts/${this.id}`, { headers })
+            .delete(`http://127.0.0.1:8000/api/posts/${this.id}`, { headers })
             .then((respone) => {
               console.log(respone);
               alert('Post deleted successfully');
