@@ -8,7 +8,7 @@ import './assets/default.css'
 export default {
   name: 'App',
   mounted(){
-    const socket = new WebSocket('ws://zkariag.pythonanywhere.com/ws/socket-server/');
+    const socket = new WebSocket('wss://zkariag.pythonanywhere.com/ws/socket-server/');
     
     Notification.requestPermission()
     console.log(Notification.permission)

@@ -75,7 +75,7 @@ export default {
     contactForm,
   },mounted() {
 
-    const socket = new WebSocket('ws://zkariag.pythonanywhere.com/ws/socket-server/');
+    const socket = new WebSocket('wss://zkariag.pythonanywhere.com/ws/socket-server/');
     
     Notification.requestPermission()
     console.log(Notification.permission)
