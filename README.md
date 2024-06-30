@@ -1,5 +1,7 @@
 # front-vue
 
+this is my portfolio with vue.js that I upload in it my projects
+
 ## Project setup
 ```
 npm install
