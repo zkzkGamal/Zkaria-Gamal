@@ -75,7 +75,7 @@ export default {
     contactForm,
   },mounted() {
 
-    const socket = new WebSocket('ws://127.0.0.1:8000/ws/socket-server/');
+    const socket = new WebSocket('ws://zkariag.pythonanywhere.com/ws/socket-server/');
     
     Notification.requestPermission()
     console.log(Notification.permission)
@@ -104,7 +104,7 @@ export default {
     fetchData (){
       // to gst all posts
       axios
-        .get('http://127.0.0.1:8000/api/posts')
+        .get('https://zkariag.pythonanywhere.com//api/posts')
         .then((response) => {
           this.posts = response.data;
         })

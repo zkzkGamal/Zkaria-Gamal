@@ -57,7 +57,7 @@ export default {
                     Authorization: `Token ${this.token}`,
                     'Content-type': 'get/json',
                 }
-      axios.get('http://127.0.0.1:8000/api/notifications', {headers})
+      axios.get('https://zkariag.pythonanywhere.com/api/notifications', {headers})
       .then((response)=>{
         this.ALLNotify= response.data
       })
