@@ -27,6 +27,116 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Enhanced CV Content -->
+            <div class="cv-grid">
+                <!-- Work Experience Column -->
+                <div class="cv-column">
+                    <h3 class="cv-section-title">
+                        <span class="icon-wrapper">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        </span>
+                        Work Experience
+                    </h3>
+                    
+                    <div class="timeline">
+                        <!-- Role 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="premium-card timeline-content">
+                                <div class="role-header">
+                                    <h4 class="role-title">AI Engineer (RAG & LLM Systems)</h4>
+                                    <span class="role-type">Part-time</span>
+                                </div>
+                                <div class="company-meta">
+                                    <span class="company-name">thepost</span>
+                                    <span class="separator">•</span>
+                                    <span class="location">Cairo</span>
+                                    <span class="separator">•</span>
+                                    <span class="date">Oct 2025 – Present</span>
+                                </div>
+                                <p class="role-desc">Building RAG pipelines and LLM-based systems for content intelligence and automated workflows.</p>
+                            </div>
+                        </div>
+
+                        <!-- Role 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="premium-card timeline-content">
+                                <div class="role-header">
+                                    <h4 class="role-title">AI Engineer</h4>
+                                    <span class="role-type">Full-time</span>
+                                </div>
+                                <div class="company-meta">
+                                    <span class="company-name">Alohadot</span>
+                                    <span class="separator">•</span>
+                                    <span class="location">Cairo</span>
+                                    <span class="separator">•</span>
+                                    <span class="date">Aug 2024 – Present</span>
+                                </div>
+                                <p class="role-desc">Designing and deploying production AI systems across computer vision, NLP, and LLM applications. End-to-end ML pipelines with real-time inference.</p>
+                            </div>
+                        </div>
+
+                        <!-- Role 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="premium-card timeline-content">
+                                <div class="role-header">
+                                    <h4 class="role-title">Software Engineer</h4>
+                                    <span class="role-type">Freelance</span>
+                                </div>
+                                <div class="company-meta">
+                                    <span class="company-name">Freelance</span>
+                                    <span class="separator">•</span>
+                                    <span class="location">Remote</span>
+                                    <span class="separator">•</span>
+                                    <span class="date">Dec 2022 – Present</span>
+                                </div>
+                                <p class="role-desc">Full-stack development and AI consulting. Built custom solutions using FastAPI, Django, React, and various ML frameworks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Publications Column -->
+                <div class="cv-column">
+                    <!-- Education -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title">
+                            <span class="icon-wrapper">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                            </span>
+                            Education
+                        </h3>
+                        <div class="glass-card education-card">
+                            <h4 class="edu-degree">Bachelor of Science in Computer Science</h4>
+                            <p class="edu-school">Cairo Higher Institute</p>
+                        </div>
+                    </div>
+
+                    <!-- Publications -->
+                    <div class="cv-section">
+                        <h3 class="cv-section-title">
+                            <span class="icon-wrapper">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                            </span>
+                            Publications
+                        </h3>
+                        <div class="premium-card publication-card">
+                            <div class="pub-badge">Research</div>
+                            <h4 class="pub-title">A Unified Deep Learning Framework for Robust Multi-Class Tumor Classification in Skin and Brain MRI</h4>
+                            <div class="pub-meta">
+                                <span class="pub-journal">MDPI</span>
+                                <span class="separator">•</span>
+                                <span class="pub-date">August 2025</span>
+                            </div>
+                            <p class="pub-abstract">Research on a unified deep learning approach for multi-class tumor classification across skin lesion images and brain MRI scans.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <TechSkills/>
         </div>
     </div>
@@ -189,9 +299,21 @@ export default {
 }
 
 @media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .bio-main {
+        font-size: 1rem;
+    }
+
+    .expertise-list {
+        font-size: 1.1rem;
+    }
+
     .action-bar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: var(--space-md);
     }
     
@@ -199,5 +321,200 @@ export default {
         width: 100%;
         justify-content: center;
     }
+
+    .cv-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .timeline {
+        padding-left: 0;
+        border-left: none;
+        gap: var(--space-xl);
+    }
+
+    .timeline-item {
+        padding-left: 0;
+    }
+
+    .timeline-dot {
+        display: none; /* Hide dots on mobile for cleaner look */
+    }
+
+    .timeline-content {
+        margin-left: 0;
+        border-left: 2px solid var(--emerald-500);
+        padding-left: var(--space-md);
+    }
+}
+
+/* ========= CV Grid Layout ========= */
+.cv-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+}
+
+.cv-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
+.cv-section-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 1.25rem;
+    color: var(--emerald-500);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border-dim);
+    padding-bottom: var(--space-xs);
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-alt);
+    padding: 0.4rem;
+    border-radius: var(--radius-md);
+    color: var(--emerald-500);
+}
+
+/* ========= Timeline Styles ========= */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    position: relative;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border-dim);
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -1.35rem; /* Adjust based on border and dot size */
+    top: 1.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--obsidian-950);
+    border: 2px solid var(--emerald-500);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.timeline-content {
+    margin-left: var(--space-md);
+}
+
+.role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xs);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.role-title {
+    font-size: 1.125rem;
+    color: var(--text-hero);
+    margin: 0;
+}
+
+.role-type {
+    font-size: 0.75rem;
+    color: var(--emerald-500);
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.company-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.separator {
+    color: var(--border-medium);
+}
+
+.company-name {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.role-desc {
+    font-size: 0.95rem;
+    color: var(--text-body);
+}
+
+/* ========= Education Card ========= */
+.education-card {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.edu-degree {
+    font-size: 1.125rem;
+    color: var(--text-hero);
+}
+
+.edu-school {
+    color: var(--emerald-500);
+    font-weight: 500;
+}
+
+/* ========= Publication Card ========= */
+.publication-card {
+    border-color: var(--indigo-500); /* Special accent for research */
+}
+
+.pub-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--indigo-600);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-bottom-left-radius: var(--radius-md);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pub-title {
+    font-size: 1rem;
+    color: var(--text-hero);
+    margin-bottom: var(--space-xs);
+    line-height: 1.4;
+    padding-right: 1rem;
+}
+
+.pub-meta {
+    font-size: 0.8rem;
+    color: var(--indigo-400);
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+
+.pub-abstract {
+    font-size: 0.9rem;
+    color: var(--text-body);
+    font-style: italic;
 }
 </style>
