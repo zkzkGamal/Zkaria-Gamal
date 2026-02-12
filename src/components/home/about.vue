@@ -44,7 +44,7 @@ export default {
     methods:{
         getresume(){
             axios
-            .get('http://127.0.0.1:8000/api/resume')
+            .get('https://zkariag.pythonanywhere.com/api/resume')
             .then((response)=>{
                 this.resume=response.data
                 window.open(this.resume.file, '_blank');

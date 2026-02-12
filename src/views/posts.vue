@@ -190,7 +190,7 @@ export default {
   },
   methods: {
     fetchData() {
-      axios.get('http://127.0.0.1:8000/api/posts')
+      axios.get('https://zkariag.pythonanywhere.com/api/posts')
         .then((response) => {
           this.posts = response.data;
         })
@@ -198,7 +198,7 @@ export default {
           console.error('Error getting data:', error);
         });
 
-      axios.get('http://127.0.0.1:8000/api/tags')
+      axios.get('https://zkariag.pythonanywhere.com/api/tags')
         .then((response) => {
           this.tagsDatas = response.data;
         })
@@ -217,7 +217,7 @@ export default {
         queryParams.push(`tags=${tagId}`);
       }
 
-      const url = 'http://127.0.0.1:8000/api/posts?' + queryParams.join('&');
+      const url = 'https://zkariag.pythonanywhere.com/api/posts?' + queryParams.join('&');
 
       axios.get(url)
         .then((response) => {
