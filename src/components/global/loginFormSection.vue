@@ -53,7 +53,7 @@
       ...mapActions(['login' ,'logout']),
       async loginUser() {
         try {
-          const response = await axios.post('https://zkariag.pythonanywhere.com/api/registeration/login', {
+          const response = await axios.post('http://127.0.0.1:8000/api/registeration/login', {
             username: this.username,
             password: this.password,
           });

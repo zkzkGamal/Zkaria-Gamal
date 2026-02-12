@@ -69,7 +69,7 @@ import { mapState } from 'vuex';
         methods:{
             getTags(){
                 axios
-                .get('https://zkariag.pythonanywhere.com/api/tags')
+                .get('http://127.0.0.1:8000/api/tags')
                 .then((response)=>{
                     this.tags=response.data
                 })
@@ -103,7 +103,7 @@ import { mapState } from 'vuex';
                 }
                 console.log(formData)
                 axios
-                .post('https://zkariag.pythonanywhere.com/api/posts', formData , {headers})
+                .post('http://127.0.0.1:8000/api/posts', formData , {headers})
                 .then((respone)=>{
                     console.log(respone)
                     alert('post created successfuly')

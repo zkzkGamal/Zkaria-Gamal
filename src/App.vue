@@ -1,14 +1,21 @@
 <template>
-    <router-view ></router-view>
+  <div class="app-layout">
+    <router-view class="page-content"></router-view>
+    <FooterCom />
+  </div>
 </template>
 
 <script>
 import './assets/default.css'
+import FooterCom from '@/components/global/Footer.vue'
 
 export default {
   name: 'App',
+  components: {
+    FooterCom
+  },
   mounted(){
-    const socket = new WebSocket('wss://zkariag.pythonanywhere.com/ws/socket-server/');
+    const socket = new WebSocket('ws://127.0.0.1:8000/ws/socket-server/');
     
     Notification.requestPermission()
     console.log(Notification.permission)
@@ -34,15 +41,25 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  /* margin-top: 60px; */
-}input[type="checkbox"]{
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+}
+
+input[type="checkbox"]{
   margin: 0 10px;
-}.ll{
-    margin: 10px 0;
-  }
+}
+
+.ll{
+  margin: 10px 0;
+}
 </style>
