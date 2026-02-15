@@ -63,7 +63,7 @@ export default {
 
 .skill-category-group {
     padding: var(--space-lg);
-    background: var(--bg-alt);
+    background: var(--glass-bg);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
     transition: var(--transition-normal);
@@ -97,7 +97,7 @@ export default {
 }
 
 .p-tag {
-    background: var(--obsidian-900);
+    background: var(--bg-alt);
     border: 1px solid var(--border-dim);
     color: var(--text-secondary);
     padding: 0.625rem 1.125rem;

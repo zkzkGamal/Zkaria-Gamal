@@ -1,10 +1,10 @@
 <template>
-    <div class="professional-profile">	
+    <div class="professional-profile">
         <h2 class="section-title">Professional Profile</h2>
         <div class="profile-content">
             <p class="bio-main">
-                Experienced AI Engineer specialized in designing and deploying production-oriented AI systems. 
-                Proven track record in building end-to-end ML pipelines with a focus on system reliability, 
+                Experienced AI Engineer specialized in designing and deploying production-oriented AI systems.
+                Proven track record in building end-to-end ML pipelines with a focus on system reliability,
                 low-latency APIs, and extreme scalability.
             </p>
             <div class="expertise-wrap">
@@ -14,8 +14,9 @@
                     <button @click="getresume" class="cta-button">
                         <span class="button-content">
                             <svg class="button-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M10 14L10 4M10 14L6 10M10 14L14 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M4 17H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M10 14L10 4M10 14L6 10M10 14L14 10" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4 17H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                             </svg>
                             Download Full Curriculum Vitae
                         </span>
@@ -28,140 +29,65 @@
                 </div>
             </div>
 
-            <!-- Enhanced CV Content -->
-            <div class="cv-grid">
-                <!-- Work Experience Column -->
-                <div class="cv-column">
-                    <h3 class="cv-section-title">
-                        <span class="icon-wrapper">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                        </span>
-                        Work Experience
-                    </h3>
-                    
-                    <div class="timeline">
-                        <!-- Role 1 -->
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="premium-card timeline-content">
-                                <div class="role-header">
-                                    <h4 class="role-title">AI Engineer (RAG & LLM Systems)</h4>
-                                    <span class="role-type">Part-time</span>
-                                </div>
-                                <div class="company-meta">
-                                    <span class="company-name">thepost</span>
-                                    <span class="separator">•</span>
-                                    <span class="location">Cairo</span>
-                                    <span class="separator">•</span>
-                                    <span class="date">Oct 2025 – Present</span>
-                                </div>
-                                <p class="role-desc">Building RAG pipelines and LLM-based systems for content intelligence and automated workflows.</p>
-                            </div>
-                        </div>
+            <Publications />
 
-                        <!-- Role 2 -->
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="premium-card timeline-content">
-                                <div class="role-header">
-                                    <h4 class="role-title">AI Engineer</h4>
-                                    <span class="role-type">Full-time</span>
-                                </div>
-                                <div class="company-meta">
-                                    <span class="company-name">Alohadot</span>
-                                    <span class="separator">•</span>
-                                    <span class="location">Cairo</span>
-                                    <span class="separator">•</span>
-                                    <span class="date">Aug 2024 – Present</span>
-                                </div>
-                                <p class="role-desc">Designing and deploying production AI systems across computer vision, NLP, and LLM applications. End-to-end ML pipelines with real-time inference.</p>
-                            </div>
-                        </div>
+            <Experience />
 
-                        <!-- Role 3 -->
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="premium-card timeline-content">
-                                <div class="role-header">
-                                    <h4 class="role-title">Software Engineer</h4>
-                                    <span class="role-type">Freelance</span>
-                                </div>
-                                <div class="company-meta">
-                                    <span class="company-name">Freelance</span>
-                                    <span class="separator">•</span>
-                                    <span class="location">Remote</span>
-                                    <span class="separator">•</span>
-                                    <span class="date">Dec 2022 – Present</span>
-                                </div>
-                                <p class="role-desc">Full-stack development and AI consulting. Built custom solutions using FastAPI, Django, React, and various ML frameworks.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education & Publications Column -->
-                <div class="cv-column">
-                    <!-- Education -->
-                    <div class="cv-section">
-                        <h3 class="cv-section-title">
-                            <span class="icon-wrapper">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
-                            </span>
-                            Education
-                        </h3>
-                        <div class="glass-card education-card">
-                            <h4 class="edu-degree">Bachelor of Science in Computer Science</h4>
-                            <p class="edu-school">Cairo Higher Institute</p>
-                        </div>
-                    </div>
-
-                    <!-- Publications -->
-                    <div class="cv-section">
-                        <h3 class="cv-section-title">
-                            <span class="icon-wrapper">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                            </span>
-                            Publications
-                        </h3>
-                        <div class="premium-card publication-card">
-                            <div class="pub-badge">Research</div>
-                            <h4 class="pub-title">A Unified Deep Learning Framework for Robust Multi-Class Tumor Classification in Skin and Brain MRI</h4>
-                            <div class="pub-meta">
-                                <span class="pub-journal">MDPI</span>
-                                <span class="separator">•</span>
-                                <span class="pub-date">August 2025</span>
-                            </div>
-                            <p class="pub-abstract">Research on a unified deep learning approach for multi-class tumor classification across skin lesion images and brain MRI scans.</p>
-                        </div>
-                    </div>
+            <div class="cv-section mt-12">
+                <h3 class="cv-section-title">
+                    <span class="icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                        </svg>
+                    </span>
+                    Education
+                </h3>
+                <div class="glass-card education-card">
+                    <h4 class="edu-degree">Bachelor of Science in Computer Science</h4>
+                    <p class="edu-school">Cairo Higher Institute</p>
                 </div>
             </div>
-
-            <TechSkills/>
+            <h3 class="cv-section-title">
+                <span class="icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </span>
+                Technical Skills
+            </h3>
+            <TechSkills />
         </div>
     </div>
 </template>
 
 <script>
 import TechSkills from '@/components/home/TechSkills.vue'
+import Publications from '@/components/home/Publications.vue'
+import Experience from '@/components/home/Experience.vue'
 import axios from 'axios';
 
 export default {
     name: 'aboutMe',
     components: {
-        TechSkills
+        TechSkills,
+        Publications,
+        Experience
     },
-    methods:{
-        getresume(){
+    methods: {
+        getresume() {
             axios
-            .get('https://zkariag.pythonanywhere.com/api/resume')
-            .then((response)=>{
-                this.resume=response.data
-                window.open(this.resume.file, '_blank');
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
+                .get('https://zkzk.softzm.cloud/api/resume')
+                .then((response) => {
+                    this.resume = response.data
+                    window.open(this.resume.file, '_blank');
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                });
         },
     }
 }
@@ -316,51 +242,18 @@ export default {
         align-items: stretch;
         gap: var(--space-md);
     }
-    
+
     .cta-button {
         width: 100%;
         justify-content: center;
     }
-
-    .cv-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
-    }
-
-    .timeline {
-        padding-left: 0;
-        border-left: none;
-        gap: var(--space-xl);
-    }
-
-    .timeline-item {
-        padding-left: 0;
-    }
-
-    .timeline-dot {
-        display: none; /* Hide dots on mobile for cleaner look */
-    }
-
-    .timeline-content {
-        margin-left: 0;
-        border-left: 2px solid var(--emerald-500);
-        padding-left: var(--space-md);
-    }
 }
 
-/* ========= CV Grid Layout ========= */
-.cv-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: var(--space-2xl);
-    margin-top: var(--space-xl);
+.mt-12 {
+    margin-top: 3rem;
 }
 
-.cv-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
-}
+/* ========= CV Grid Layout Reused for Education ========= */
 
 .cv-section-title {
     display: flex;
@@ -383,90 +276,13 @@ export default {
     color: var(--emerald-500);
 }
 
-/* ========= Timeline Styles ========= */
-.timeline {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-    position: relative;
-    padding-left: 1rem;
-    border-left: 2px solid var(--border-dim);
-}
-
-.timeline-item {
-    position: relative;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -1.35rem; /* Adjust based on border and dot size */
-    top: 1.5rem;
-    width: 12px;
-    height: 12px;
-    background: var(--obsidian-950);
-    border: 2px solid var(--emerald-500);
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.timeline-content {
-    margin-left: var(--space-md);
-}
-
-.role-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-xs);
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.role-title {
-    font-size: 1.125rem;
-    color: var(--text-hero);
-    margin: 0;
-}
-
-.role-type {
-    font-size: 0.75rem;
-    color: var(--emerald-500);
-    background: rgba(16, 185, 129, 0.1);
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.company-meta {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    margin-bottom: var(--space-sm);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    align-items: center;
-}
-
-.separator {
-    color: var(--border-medium);
-}
-
-.company-name {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.role-desc {
-    font-size: 0.95rem;
-    color: var(--text-body);
-}
-
 /* ========= Education Card ========= */
 .education-card {
     padding: var(--space-lg);
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+    margin-bottom: 1rem;
 }
 
 .edu-degree {
@@ -477,44 +293,5 @@ export default {
 .edu-school {
     color: var(--emerald-500);
     font-weight: 500;
-}
-
-/* ========= Publication Card ========= */
-.publication-card {
-    border-color: var(--indigo-500); /* Special accent for research */
-}
-
-.pub-badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--indigo-600);
-    color: white;
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    border-bottom-left-radius: var(--radius-md);
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.pub-title {
-    font-size: 1rem;
-    color: var(--text-hero);
-    margin-bottom: var(--space-xs);
-    line-height: 1.4;
-    padding-right: 1rem;
-}
-
-.pub-meta {
-    font-size: 0.8rem;
-    color: var(--indigo-400);
-    margin-bottom: var(--space-sm);
-    font-weight: 600;
-}
-
-.pub-abstract {
-    font-size: 0.9rem;
-    color: var(--text-body);
-    font-style: italic;
 }
 </style>

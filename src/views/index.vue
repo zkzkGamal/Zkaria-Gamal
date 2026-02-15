@@ -18,18 +18,19 @@
             </div>
             <div class="hero-text-container">
               <h4 class="kicker">Experienced AI Engineer</h4>
-              <h1 class="hero-title">Refining the future of <span class="gradient-text-alt">Intelligent Systems</span></h1>
-              <HeroPreview/>
+              <h1 class="hero-title">Refining the future of <span class="gradient-text-alt">Intelligent Systems</span>
+              </h1>
+              <HeroPreview />
             </div>
           </div>
         </div>
       </section>
-
+      <a name="about"></a>
       <section class="profile-section">
         <div class="main-container">
           <div class="profile-grid">
-            <aboutme/>
-            <socialL/>
+            <aboutme />
+            <socialL />
           </div>
         </div>
       </section>
@@ -41,14 +42,8 @@
             <p class="section-subtitle">Production-grade AI solutions and scalable system architectures.</p>
           </div>
           <div class="post-wrapper">
-            <HomeCards 
-              v-for="(post) in posts.slice(0, 6)" 
-              :key="post.id"
-              :title="post.title"
-              :id="post.id"
-              :sub_heading="post.sub_headline"
-              :thumbnail="post.thumbnail"
-            />
+            <HomeCards v-for="(post) in posts.slice(0, 6)" :key="post.id" :title="post.title" :id="post.id"
+              :sub_heading="post.sub_headline" :thumbnail="post.thumbnail" />
           </div>
           <div class="footer-cta">
             <router-link to="/posts" class="premium-button">
@@ -61,7 +56,7 @@
       <section class="contact-section" id="contact">
         <div class="main-container">
           <div class="glass-card contact-card">
-            <contactForm/>
+            <contactForm />
           </div>
         </div>
       </section>
@@ -83,9 +78,9 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'HomePage',
-  components:{
+  components: {
     headerCom, // Register global header
-    HeroPreview ,
+    HeroPreview,
     aboutme,
     socialL,
     HomeCards,
@@ -100,9 +95,9 @@ export default {
     }
   },
   methods: {
-    fetchData (){
+    fetchData() {
       axios
-        .get('https://zkariag.pythonanywhere.com/api/posts')
+        .get('https://zkzk.softzm.cloud/api/posts')
         .then((response) => {
           this.posts = response.data;
         })
@@ -111,7 +106,7 @@ export default {
         });
     }
   },
-  computed:{
+  computed: {
     ...mapState(['user'])
   }
 }
@@ -119,8 +114,9 @@ export default {
 
 <style scoped>
 .portfolio-obsidian {
-  background-color: var(--bg-main);
+  background-color: var(--bg-alt);
   min-height: 100vh;
+  margin-bottom: 2rem;
 }
 
 /* Removed old nav styles since we use headerCom now */
@@ -145,84 +141,96 @@ export default {
 }
 
 .floating-badge {
-    position: absolute;
-    bottom: 2rem;
-    right: -1rem;
-    background: var(--obsidian-900);
-    border: 1px solid var(--emerald-500);
-    color: var(--emerald-500);
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    box-shadow: 0 0 20px var(--glow-primary);
+  position: absolute;
+  bottom: 2rem;
+  right: -1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--emerald-500);
+  color: var(--emerald-500);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+  transition: var(--transition-fast);
+}
+
+.floating-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
 }
 
 .hero-image-container {
-    position: relative;
-    width: fit-content;
+  position: relative;
+  width: fit-content;
 }
 
 .profile-section {
-    padding: 6rem 0;
-    border-top: 1px solid var(--border-dim);
-    background: var(--bg-alt); /* Changed to use variable */
+  padding: 6rem 0;
 }
 
 .profile-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
 }
 
 .section-header {
-    margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
 .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .section-subtitle {
-    font-size: 1.125rem;
-    color: var(--text-body);
+  font-size: 1.125rem;
+  color: var(--text-body);
 }
 
 .footer-cta {
-    margin-top: 5rem;
-    text-align: center;
+  margin-top: 5rem;
+  text-align: center;
 }
 
 .premium-button {
-    display: inline-block;
-    padding: 1.25rem 3rem;
-    background: transparent;
-    border: 1px solid var(--border-dim);
-    color: var(--text-hero);
-    border-radius: 9999px;
-    font-weight: 700;
-    transition: var(--transition-fast);
+  display: inline-block;
+  padding: 1.25rem 3rem;
+  background: transparent;
+  border: 1px solid var(--border-dim);
+  color: var(--text-hero);
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: var(--transition-fast);
+  margin-bottom: 1rem;
 }
 
 .premium-button:hover {
-    border-color: var(--emerald-500);
-    background: var(--glow-primary);
-    transform: translateY(-2px);
+  border-color: var(--emerald-500);
+  background: var(--glow-primary);
+  transform: translateY(-2px);
 }
 
 .contact-card {
-    padding: 4rem;
-    max-width: 800px;
-    margin: 0 auto;
+  padding: 4rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* Footer styles moved to global footer component */
 
 @media (max-width: 900px) {
-    .hero-title { font-size: 3rem; }
-    .profile-grid { grid-template-columns: 1fr; }
-    .contact-card { padding: 2rem; }
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 2rem;
+  }
 }
 </style>
-

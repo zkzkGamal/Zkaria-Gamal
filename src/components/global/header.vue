@@ -1,31 +1,32 @@
 <template>
-  <header class="glass-header" :class="{ 'scrolled': isScrolled }">
+  <header class="glass-header" :class="{ 'scrolled': isScrolled && !isMenuOpen, 'menu-open': isMenuOpen }">
     <div class="main-container nav-content">
       <!-- Logo -->
       <router-link :to="{ name: 'home' }" class="brand-logo">
-        <span class="logo-text">Zkzk</span>
+        <!-- <span class="logo-text">Z.G</span> -->
+         <img src="../../assets/logo-bg.png" alt="Logo" class="logo">
       </router-link>
 
       <!-- Desktop Navigation -->
       <nav class="desktop-nav">
         <ul class="nav-links">
-          <li><router-link to="/" class="nav-link">Home</router-link></li>
-          <li><router-link to="/posts" class="nav-link">Work</router-link></li>
-          <li><a href="/#about" class="nav-link">About</a></li>
-          <li><a href="/#contact" class="nav-link">Contact</a></li>
-          
+          <li><router-link to="/" class="header-link">Home</router-link></li>
+          <li><router-link to="/posts" class="header-link">Work</router-link></li>
+          <li><a href="/#about" class="header-link">About</a></li>
+          <li><a href="/#contact" class="header-link">Contact</a></li>
+
           <li v-if="user" class="user-menu">
-            <router-link :to="{ name: 'profile' }" class="nav-link notification-link">
+            <router-link :to="{ name: 'profile' }" class="header-link notification-link">
               Notifications
               <span class="notification-dot" v-if="hasNotifications"></span>
             </router-link>
-            <a href="#" @click.prevent="logout" class="nav-link logout-btn">Logout</a>
+            <a href="#" @click.prevent="logout" class="header-link logout-btn">Logout</a>
           </li>
           <li v-else>
-            <router-link to="/login" class="nav-link login-btn">Login</router-link>
+            <router-link to="/login" class="header-link login-btn">Login</router-link>
           </li>
         </ul>
-        
+
         <div class="divider"></div>
         <ThemeToggle />
       </nav>
@@ -40,30 +41,32 @@
       </button>
 
       <!-- Mobile Navigation -->
-      <div class="mobile-nav" :class="{ 'open': isMenuOpen }">
-        <div class="mobile-nav-content">
-          <ul class="mobile-links">
-            <li><router-link to="/" @click="closeMenu">Home</router-link></li>
-            <li><router-link to="/posts" @click="closeMenu">Work</router-link></li>
-            <li><a href="/#about" @click="closeMenu">About</a></li>
-            <li><a href="/#contact" @click="closeMenu">Contact</a></li>
-            
-            <hr class="mobile-divider">
-            
-            <li v-if="user">
-              <router-link :to="{ name: 'profile' }" @click="closeMenu">Notifications</router-link>
-              <a href="#" @click.prevent="logoutAndClose">Logout</a>
-            </li>
-            <li v-else>
-              <router-link to="/login" @click="closeMenu">Login</router-link>
-            </li>
-          </ul>
-          <div class="mobile-theme-toggle">
-            <span class="theme-label">Switch Theme</span>
-            <ThemeToggle />
+      <teleport to="body">
+        <div class="mobile-nav" :class="{ 'open': isMenuOpen }">
+          <div class="mobile-nav-content">
+            <ul class="mobile-links">
+              <li><router-link to="/" @click="closeMenu">Home</router-link></li>
+              <li><router-link to="/posts" @click="closeMenu">Work</router-link></li>
+              <li><a href="/#about" @click="closeMenu">About</a></li>
+              <li><a href="/#contact" @click="closeMenu">Contact</a></li>
+
+              <hr class="mobile-divider">
+
+              <li v-if="user">
+                <router-link :to="{ name: 'profile' }" @click="closeMenu">Notifications</router-link>
+                <a href="#" @click.prevent="logoutAndClose">Logout</a>
+              </li>
+              <li v-else>
+                <router-link to="/login" @click="closeMenu">Login</router-link>
+              </li>
+            </ul>
+            <div class="mobile-theme-toggle">
+              <span class="theme-label">Switch Theme</span>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
-      </div>
+      </teleport>
     </div>
   </header>
 </template>
@@ -81,7 +84,7 @@ export default {
     return {
       isMenuOpen: false,
       isScrolled: false,
-      hasNotifications: false // In a real app, bind this to Vuex state
+      hasNotifications: false
     };
   },
   computed: {
@@ -110,6 +113,7 @@ export default {
     logoutAndClose() {
       this.logout();
       this.closeMenu();
+      this.$router.push('/login');
     },
     handleScroll() {
       this.isScrolled = window.scrollY > 20;
@@ -130,12 +134,27 @@ export default {
   background: transparent;
 }
 
+.logo {
+  width: 75px;
+  height: 75px;
+}
+
 .glass-header.scrolled {
   padding: 1rem 0;
-  background: rgba(var(--bg-rgb), 0.8);
+  background: rgba(var(--bg-alt-rgb), 0.85);
+  /* Slightly more opaque */
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.glass-header.menu-open {
+  /* Ensure transparent background correctly when menu is open */
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 }
 
 .nav-content {
@@ -147,6 +166,9 @@ export default {
 .brand-logo {
   text-decoration: none;
   z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .logo-text {
@@ -177,16 +199,17 @@ export default {
   padding: 0;
 }
 
-.nav-link {
+.header-link {
   color: var(--text-body);
   font-weight: 600;
   font-size: 0.95rem;
   transition: var(--transition-fast);
   position: relative;
+  text-decoration: none;
 }
 
-.nav-link:hover,
-.nav-link.router-link-active {
+.header-link:hover,
+.header-link.router-link-active {
   color: var(--emerald-500);
 }
 
@@ -269,7 +292,7 @@ export default {
   position: fixed;
   inset: 0;
   background: var(--bg-main);
-  z-index: 1000;
+  z-index: 999;
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -297,7 +320,7 @@ export default {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .mobile-links a {
@@ -305,6 +328,13 @@ export default {
   font-weight: 700;
   color: var(--text-hero);
   display: block;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.mobile-links a:hover,
+.mobile-links a.router-link-active {
+  color: var(--emerald-500);
 }
 
 .mobile-divider {
@@ -312,7 +342,7 @@ export default {
   height: 1px;
   background: var(--border-dim);
   border: none;
-  margin: 1rem auto;
+  margin: 0 auto;
 }
 
 .mobile-theme-toggle {
@@ -320,6 +350,7 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .theme-label {
@@ -329,7 +360,8 @@ export default {
   letter-spacing: 0.1em;
 }
 
-@media (max-width: 768px) {
+/* Change breakpoint from 768px to 1024px for earlier switching */
+@media (max-width: 1024px) {
   .desktop-nav {
     display: none;
   }
@@ -337,8 +369,10 @@ export default {
   .mobile-menu-btn {
     display: block;
   }
+
+  .glass-header {
+    padding: 1rem 0;
+    /* consistent padding on mobile */
+  }
 }
 </style>
-
-
-

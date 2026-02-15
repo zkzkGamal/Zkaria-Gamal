@@ -15,7 +15,7 @@ export default {
     FooterCom
   },
   mounted(){
-    const socket = new WebSocket('ws://127.0.0.1:8000/ws/socket-server/');
+    const socket = new WebSocket('wss://zkzk.softzm.cloud/ws/socket-server/');
     
     Notification.requestPermission()
     console.log(Notification.permission)

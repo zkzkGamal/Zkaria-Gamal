@@ -1,13 +1,13 @@
 <template>
   <div class="portfolio-obsidian">
-    <headerCom/>
-    
+    <headerCom />
+
     <main class="post-detail-page">
       <div class="main-container">
         <!-- Back Button -->
         <router-link to="/posts" class="back-button">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
           Back to Posts
         </router-link>
@@ -23,13 +23,17 @@
           <div v-if="super1" class="admin-actions">
             <router-link :to="'/updatePost/' + id" class="edit-btn">
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                <path d="M14 6L14.5 5.5C14.8978 5.10217 15.0967 4.90326 15.3124 4.81654C15.5998 4.70073 15.9259 4.73731 16.1832 4.91716C16.3753 5.052 16.5269 5.30062 16.83 5.79786C17.1332 6.29511 17.2847 6.54373 17.3284 6.79533C17.3857 7.11196 17.3031 7.43765 17.1016 7.6832C16.9519 7.86378 16.6993 8.01527 16.1939 8.31826L4 16L2 18L4 16L14 6Z" stroke="currentColor" stroke-width="1.5"/>
+                <path
+                  d="M14 6L14.5 5.5C14.8978 5.10217 15.0967 4.90326 15.3124 4.81654C15.5998 4.70073 15.9259 4.73731 16.1832 4.91716C16.3753 5.052 16.5269 5.30062 16.83 5.79786C17.1332 6.29511 17.2847 6.54373 17.3284 6.79533C17.3857 7.11196 17.3031 7.43765 17.1016 7.6832C16.9519 7.86378 16.6993 8.01527 16.1939 8.31826L4 16L2 18L4 16L14 6Z"
+                  stroke="currentColor" stroke-width="1.5" />
               </svg>
               Edit Post
             </router-link>
             <button @click="confirmDelete()" class="delete-btn">
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                <path d="M3 5H17M8 9V15M12 9V15M4 5L5 17C5 17.5304 5.21071 18.0391 5.58579 18.4142C5.96086 18.7893 6.46957 19 7 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17L16 5M7 5V3C7 2.73478 7.10536 2.48043 7.29289 2.29289C7.48043 2.10536 7.73478 2 8 2H12C12.2652 2 12.5196 2.10536 12.7071 2.29289C12.8946 2.48043 13 2.73478 13 3V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path
+                  d="M3 5H17M8 9V15M12 9V15M4 5L5 17C5 17.5304 5.21071 18.0391 5.58579 18.4142C5.96086 18.7893 6.46957 19 7 19H13C13.5304 19 14.0391 18.7893 14.4142 18.4142C14.7893 18.0391 15 17.5304 15 17L16 5M7 5V3C7 2.73478 7.10536 2.48043 7.29289 2.29289C7.48043 2.10536 7.73478 2 8 2H12C12.2652 2 12.5196 2.10536 12.7071 2.29289C12.8946 2.48043 13 2.73478 13 3V5"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
               </svg>
               Delete Post
             </button>
@@ -38,7 +42,7 @@
           <!-- Tags -->
           <div class="tags-wrapper" v-if="tags && tags.length > 0">
             <span class="tag" v-for="tag in tags" :key="tag">
-              {{ tagsNames[tag-12] }}
+              {{ tagsNames[tag - 12] }}
             </span>
           </div>
 
@@ -52,7 +56,7 @@
 
         <!-- Comments Section -->
         <div class="comments-section glass-card">
-          <ComentCard :post_id="postID"/>
+          <ComentCard :post_id="postID" />
         </div>
       </div>
     </main>
@@ -62,30 +66,30 @@
 <script>
 import headerCom from '@/components/global/header.vue';
 import ComentCard from '@/components/ComentCard.vue';
-import'@/assets/post.css'
+import '@/assets/post.css'
 import axios from 'axios';
 import { mapState } from 'vuex';
 
 export default {
   name: 'PostPage',
-  components:{
+  components: {
     headerCom,
     ComentCard
   },
-  data:function(){
-    return{
-      title:'',
-      thumbnail:'',
-      sub_heading:'',
-      body:'',
-      tags:[],
-      id:'',
-      tagsNames:[],
-      postID : this.$route.params.id
+  data: function () {
+    return {
+      title: '',
+      thumbnail: '',
+      sub_heading: '',
+      body: '',
+      tags: [],
+      id: '',
+      tagsNames: [],
+      postID: this.$route.params.id
     }
   },
-  computed:{
-    ...mapState(['superuser' , 'user', 'token']),
+  computed: {
+    ...mapState(['superuser', 'user', 'token']),
     csrfToken() {
       const cookieVal = document.cookie
         .split('; ')
@@ -96,58 +100,58 @@ export default {
       return '';
     },
     super1() {
-      if (this.user){
+      if (this.user) {
         return this.user.is_superuser ? true : false;
-      }else{
-        return this.superuser? false : false;
+      } else {
+        return this.superuser ? false : false;
       }
     },
   },
-  mounted(){
+  mounted() {
     this.fetchData()
   },
-  methods:{
-    fetchData(){
+  methods: {
+    fetchData() {
       let postID = this.$route.params.id
-      axios.get(`https://zkariag.pythonanywhere.com/api/posts/${postID}`)
-      .then((response) => {
-        this.title = response.data.title;
-        this.id = response.data.id;
-        this.thumbnail = response.data.thumbnail;
-        this.body = response.data.body;
-        this.sub_heading = response.data.sub_headline;
-        this.tags = response.data.tags
-      })
-      .catch((error) => {
-        console.error('Error getting data:', error);
-      });
-
-      axios.get('https://zkariag.pythonanywhere.com/api/tags')
-      .then((response) => {
-        response.data.forEach((element ) => {
-          this.tagsNames.push(element.name) ;
+      axios.get(`https://zkzk.softzm.cloud/api/posts/${postID}`)
+        .then((response) => {
+          this.title = response.data.title;
+          this.id = response.data.id;
+          this.thumbnail = response.data.thumbnail;
+          this.body = response.data.body;
+          this.sub_heading = response.data.sub_headline;
+          this.tags = response.data.tags
+        })
+        .catch((error) => {
+          console.error('Error getting data:', error);
         });
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+
+      axios.get('https://zkzk.softzm.cloud/api/tags')
+        .then((response) => {
+          response.data.forEach((element) => {
+            this.tagsNames.push(element.name);
+          });
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
     },
-    confirmDelete(){
+    confirmDelete() {
       let x = window.confirm("Are you sure you want to delete this post?")
-      if(x == true){
+      if (x == true) {
         const headers = {
           Authorization: `Token ${this.token}`,
           'Content-type': 'multipart/form-data',
           'X-CSRFToken': this.csrfToken,
         }
-        axios.delete(`https://zkariag.pythonanywhere.com/api/posts/${this.postID}` , {headers})
-        .then((respone)=>{
-          console.log(respone)
-          alert('Post deleted successfully')
-          this.$router.push('/posts');
-        }).catch(error =>{
-          console.warn('error deleting post' , error)
-        })
+        axios.delete(`https://zkzk.softzm.cloud/api/posts/${this.postID}`, { headers })
+          .then((respone) => {
+            console.log(respone)
+            alert('Post deleted successfully')
+            this.$router.push('/posts');
+          }).catch(error => {
+            console.warn('error deleting post', error)
+          })
       }
     },
   }
@@ -157,7 +161,7 @@ export default {
 <style scoped>
 .portfolio-obsidian {
   min-height: 100vh;
-  background: var(--bg-main);
+  background: var(--bg-alt);
 }
 
 .post-detail-page {
@@ -175,7 +179,8 @@ export default {
   border-radius: var(--radius-md);
   color: var(--text-hero);
   font-weight: 600;
-  margin-bottom: var(--space-xl);
+  margin-top: 3rem;
+  margin-bottom: var(--space-lg);
   transition: var(--transition-fast);
 }
 
@@ -202,7 +207,7 @@ export default {
 
 /* Article Content */
 .article-content {
- padding: var(--space-2xl);
+  padding: var(--space-2xl);
   max-width: 900px;
   margin: 0 auto var(--space-2xl);
 }
@@ -289,34 +294,34 @@ export default {
   color: var(--text-body);
 }
 
-.article-body >>> h1,
-.article-body >>> h2,
-.article-body >>> h3,
-.article-body >>> h4,
-.article-body >>> h5,
-.article-body >>> h6 {
+.article-body>>>h1,
+.article-body>>>h2,
+.article-body>>>h3,
+.article-body>>>h4,
+.article-body>>>h5,
+.article-body>>>h6 {
   color: var(--text-hero);
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
-.article-body >>> p {
+.article-body>>>p {
   margin-bottom: 1.5rem;
 }
 
-.article-body >>> a {
+.article-body>>>a {
   color: var(--emerald-500);
   text-decoration: underline;
 }
 
-.article-body >>> img {
+.article-body>>>img {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-lg);
   margin: var(--space-lg) 0;
 }
 
-.article-body >>> pre {
+.article-body>>>pre {
   background: var(--bg-alt);
   padding: var(--space-md);
   border-radius: var(--radius-md);
@@ -324,7 +329,7 @@ export default {
   margin: var(--space-lg) 0;
 }
 
-.article-body >>> code {
+.article-body>>>code {
   background: var(--bg-alt);
   padding: 0.2rem 0.4rem;
   border-radius: 0.25rem;
@@ -340,11 +345,12 @@ export default {
 }
 
 @media (max-width: 768px) {
+
   .article-content,
   .comments-section {
     padding: var(--space-lg);
   }
-  
+
   .admin-actions {
     flex-direction: column;
   }

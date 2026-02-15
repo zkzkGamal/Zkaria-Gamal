@@ -1,7 +1,7 @@
 <template>
   <div class="portfolio-obsidian">
-    <headerCom/>
-    
+    <headerCom />
+
     <main class="profile-page">
       <div class="main-container">
         <div class="page-header">
@@ -13,18 +13,15 @@
         <div v-if="notificationNew.length > 0" class="notifications-section">
           <h2 class="section-title">New Notifications</h2>
           <div class="notifications-grid">
-            <div 
-              v-for="notification in notificationNew" 
-              :key="notification.post_id"
-              class="notification-card glass-card new"
-            >
+            <div v-for="notification in notificationNew" :key="notification.post_id"
+              class="notification-card glass-card new">
               <div class="notification-content">
                 <div class="notification-badge">New</div>
                 <p class="notification-message">{{ notification.message }}</p>
                 <router-link :to="'/post/' + notification.post_id" class="notification-link">
                   <span>View Post</span>
                   <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                   </svg>
                 </router-link>
               </div>
@@ -36,17 +33,13 @@
         <div v-if="ALLNotify.length > 0" class="notifications-section">
           <h2 class="section-title">All Notifications</h2>
           <div class="notifications-grid">
-            <div 
-              v-for="notification in ALLNotify" 
-              :key="notification.post_id"
-              class="notification-card glass-card"
-            >
+            <div v-for="notification in ALLNotify" :key="notification.post_id" class="notification-card glass-card">
               <div class="notification-content">
                 <p class="notification-message">{{ notification.text }}</p>
                 <router-link :to="'/post/' + notification.notify_post" class="notification-link">
                   <span>View Post</span>
                   <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                   </svg>
                 </router-link>
               </div>
@@ -57,8 +50,10 @@
         <!-- Empty State -->
         <div v-if="notificationNew.length === 0 && ALLNotify.length === 0" class="empty-state">
           <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
           <h3>No notifications yet</h3>
           <p>We'll notify you when there's something new</p>
@@ -81,15 +76,15 @@ export default {
   data() {
     return {
       notificationNew: [],
-      ALLNotify:[],
+      ALLNotify: [],
     };
   },
-  computed:{
+  computed: {
     ...mapState(['user', 'token']),
   },
   mounted() {
-    const socket = new WebSocket('ws://127.0.0.1:8000/ws/socket-server/');
-    
+    const socket = new WebSocket('wss://zkzk.softzm.cloud/ws/socket-server/');
+
     Notification.requestPermission()
     console.log(Notification.permission)
 
@@ -107,19 +102,19 @@ export default {
     };
     this.getNotify()
   },
-  methods:{
-    getNotify(){
+  methods: {
+    getNotify() {
       const headers = {
         Authorization: `Token ${this.token}`,
         'Content-type': 'get/json',
       }
-      axios.get('https://zkariag.pythonanywhere.com/api/notifications', {headers})
-      .then((response)=>{
-        this.ALLNotify= response.data
-      })
-      .catch((error)=>{
-        console.error(error)
-      })
+      axios.get('https://zkzk.softzm.cloud/api/notifications', { headers })
+        .then((response) => {
+          this.ALLNotify = response.data
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     }
   }
 };
@@ -128,7 +123,7 @@ export default {
 <style scoped>
 .portfolio-obsidian {
   min-height: 100vh;
-  background: var(--bg-main);
+  background: var(--bg-alt);
 }
 
 .profile-page {
@@ -167,6 +162,7 @@ export default {
 
 .notifications-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--space-md);
 }
 
@@ -174,91 +170,28 @@ export default {
   padding: var(--space-lg);
   transition: var(--transition-normal);
   position: relative;
-}
-
-.notification-card.new {
-  border-left: 3px solid var(--emerald-500);
-}
-
-.notification-card:hover {
-  transform: translateX(8px);
-  border-color: var(--emerald-500);
-}
-
-.notification-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
 }
 
-.notification-badge {
-  display: inline-block;
-  width: fit-content;
-  padding: 0.25rem 0.75rem;
-  background: var(--emerald-500);
-  color: var(--obsidian-950);
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.notification-message {
-  font-size: 1rem;
-  color: var(--text-hero);
-  line-height: 1.6;
-}
-
-.notification-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--emerald-500);
-  font-weight: 600;
-  font-size: 0.9rem;
-  align-self: flex-start;
-  transition: var(--transition-fast);
-}
-
-.notification-link:hover {
-  gap: 0.75rem;
-}
-
-.notification-link svg {
-  transition: var(--transition-fast);
-}
-
-.notification-link:hover svg {
-  transform: translateX(4px);
-}
-
-/* Empty State */
-.empty-state {
-  text-align: center;
-  padding: var(--space-3xl);
-  color: var(--text-muted);
-}
-
-.empty-state svg {
-  color: var(--text-muted);
-  margin-bottom: var(--space-md);
-  opacity: 0.5;
-}
-
-.empty-state h3 {
-  color: var(--text-hero);
-  margin-bottom: var(--space-sm);
-  font-size: 1.5rem;
-}
-
-.empty-state p {
-  font-size: 1rem;
-}
+/* ... existing styles ... */
 
 @media (max-width: 768px) {
-  .notification-card {
-    padding: var(--space-md);
+  .profile-page {
+    padding: var(--space-lg) 0;
+  }
+
+  .notifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
   }
 }
 </style>

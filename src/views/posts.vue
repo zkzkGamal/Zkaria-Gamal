@@ -1,7 +1,7 @@
 <template>
   <div class="portfolio-obsidian">
     <headerCom />
-    
+
     <main class="posts-page">
       <div class="main-container">
         <!-- Page Header -->
@@ -14,7 +14,7 @@
         <div v-if="superuser" class="admin-actions">
           <router-link to="/createPost" class="create-post-btn">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
             Create New Post
           </router-link>
@@ -25,32 +25,18 @@
           <form @submit.prevent="fetchDataFilter" class="search-form">
             <div class="search-input-wrapper">
               <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2"/>
-                <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2" />
+                <path d="M14 14L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
-              <input 
-                type="text" 
-                v-model="filterData.title" 
-                placeholder="Search by title..." 
-                class="search-input"
-              >
+              <input type="text" v-model="filterData.title" placeholder="Search by title..." class="search-input">
             </div>
 
             <div v-if="tagsDatas.length > 0" class="filter-tags">
               <h4 class="filter-label">Filter by Tags</h4>
               <div class="tags-grid">
-                <label 
-                  v-for="tag in tagsDatas" 
-                  :key="tag.id" 
-                  class="tag-checkbox"
-                  :class="{ 'active': filterData.tags.includes(tag.id) }"
-                >
-                  <input 
-                    type="checkbox" 
-                    :value="tag.id" 
-                    v-model="filterData.tags"
-                    class="checkbox-input"
-                  >
+                <label v-for="tag in tagsDatas" :key="tag.id" class="tag-checkbox"
+                  :class="{ 'active': filterData.tags.includes(tag.id) }">
+                  <input type="checkbox" :value="tag.id" v-model="filterData.tags" class="checkbox-input">
                   <span class="tag-label">{{ tag.name }}</span>
                 </label>
               </div>
@@ -58,8 +44,8 @@
 
             <button type="submit" class="search-btn">
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-                <path d="M13 7L7 13M7 7L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
+                <path d="M13 7L7 13M7 7L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2" />
               </svg>
               Apply Filters
             </button>
@@ -68,22 +54,15 @@
 
         <!-- Posts Grid -->
         <div class="posts-grid">
-          <PostCards 
-            v-for="post in paginatedPosts" 
-            :key="post.id"
-            :title="post.title" 
-            :subHead="post.sub_headline" 
-            :thumbnail="post.thumbnail" 
-            :tags="post.tags"
-            :id="post.id" 
-          />
+          <PostCards v-for="post in paginatedPosts" :key="post.id" :title="post.title" :subHead="post.sub_headline"
+            :thumbnail="post.thumbnail" :tags="post.tags" :id="post.id" />
         </div>
 
         <!-- Empty State -->
         <div v-if="paginatedPosts.length === 0" class="empty-state">
           <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
-            <path d="M8 12H16M12 8V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.3" />
+            <path d="M8 12H16M12 8V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
           <h3>No posts found</h3>
           <p>Try adjusting your filters or search query</p>
@@ -95,7 +74,7 @@
             <li :class="{ disabled: currentPage === 1 }">
               <button @click="goToPage(currentPage - 1)" class="page-btn" :disabled="currentPage === 1">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                  <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
               </button>
             </li>
@@ -108,11 +87,7 @@
               <span>...</span>
             </li>
 
-            <li 
-              v-for="page in visiblePages" 
-              :key="page" 
-              :class="{ active: page === currentPage }"
-            >
+            <li v-for="page in visiblePages" :key="page" :class="{ active: page === currentPage }">
               <button @click="goToPage(page)" class="page-btn">{{ page }}</button>
             </li>
 
@@ -127,7 +102,7 @@
             <li :class="{ disabled: currentPage === totalPages }">
               <button @click="goToPage(currentPage + 1)" class="page-btn" :disabled="currentPage === totalPages">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                  <path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M8 4L14 10L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
               </button>
             </li>
@@ -137,7 +112,7 @@
     </main>
   </div>
 </template>
-  
+
 <script>
 import headerCom from '@/components/global/header.vue';
 import PostCards from '@/components/PostCards.vue';
@@ -176,7 +151,7 @@ export default {
       const pages = [];
       const start = Math.max(2, this.currentPage - 1);
       const end = Math.min(this.totalPages - 1, this.currentPage + 1);
-      
+
       for (let i = start; i <= end; i++) {
         if (i !== 1 && i !== this.totalPages) {
           pages.push(i);
@@ -190,7 +165,7 @@ export default {
   },
   methods: {
     fetchData() {
-      axios.get('https://zkariag.pythonanywhere.com/api/posts')
+      axios.get('https://zkzk.softzm.cloud/api/posts')
         .then((response) => {
           this.posts = response.data;
         })
@@ -198,7 +173,7 @@ export default {
           console.error('Error getting data:', error);
         });
 
-      axios.get('https://zkariag.pythonanywhere.com/api/tags')
+      axios.get('https://zkzk.softzm.cloud/api/tags')
         .then((response) => {
           this.tagsDatas = response.data;
         })
@@ -217,7 +192,7 @@ export default {
         queryParams.push(`tags=${tagId}`);
       }
 
-      const url = 'https://zkariag.pythonanywhere.com/api/posts?' + queryParams.join('&');
+      const url = 'https://zkzk.softzm.cloud/api/posts?' + queryParams.join('&');
 
       axios.get(url)
         .then((response) => {
@@ -241,7 +216,7 @@ export default {
 <style scoped>
 .portfolio-obsidian {
   min-height: 100vh;
-  background: var(--bg-main);
+  background: var(--bg-alt);
 }
 
 .posts-page {
@@ -497,15 +472,13 @@ export default {
   .posts-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .search-section {
     padding: var(--space-lg);
   }
-  
+
   .pagination {
     flex-wrap: wrap;
   }
 }
 </style>
-
-  

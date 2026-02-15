@@ -69,7 +69,7 @@
         methods:{
             getTags(){
                 axios
-                .get('https://zkariag.pythonanywhere.com/api/tags')
+                .get('https://zkzk.softzm.cloud/api/tags')
                 .then((response)=>{
                     this.tags=response.data
                 })
@@ -79,7 +79,7 @@
             },
             getPostData(){
                 axios
-                    .get(`https://zkariag.pythonanywhere.com/api/posts/${this.id}`)
+                    .get(`https://zkzk.softzm.cloud/api/posts/${this.id}`)
                     .then((response) => {
                         this.title = response.data.title;
                         this.thumbnail = response.data.thumbnail.url;
@@ -119,7 +119,7 @@
                 }
                 console.log(formData)
                 axios
-                .put(`https://zkariag.pythonanywhere.com/api/posts/${this.id}`, formData , {headers})
+                .put(`https://zkzk.softzm.cloud/api/posts/${this.id}`, formData , {headers})
                 .then((respone)=>{
                     console.log(respone)
                     alert('post created successfuly')
